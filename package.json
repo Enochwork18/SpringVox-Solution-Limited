@@ -1,0 +1,31 @@
+{
+  "name": "springvox-solution-limited",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "framer-motion": "^12.9.4",
+    "@react-three/fiber": "^9.1.2",
+    "@react-three/drei": "^10.7.7",
+    "three": "^0.174.0",
+    "@babel/runtime": "^7.27.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
