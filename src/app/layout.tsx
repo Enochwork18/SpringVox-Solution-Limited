@@ -15,26 +15,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SpringVox Solution Limited | Intelligent Software Solutions for the Future",
+  title: "SpringVox Solution Limited | AI, Enterprise Software & Digital Innovation",
   description:
-    "SpringVox Solution Limited is a forward-thinking technology company specializing in AI, cybersecurity, enterprise software, VoIP, web & mobile development, and digital transformation services.",
+    "SpringVox Solution Limited is a Nigerian technology company building AI platforms, enterprise software, cybersecurity, and digital transformation solutions for startups and enterprises.",
   keywords: [
-    "SpringVox",
-    "software development",
-    "artificial intelligence",
-    "cybersecurity",
-    "enterprise solutions",
-    "VoIP",
-    "digital transformation",
-    "web development",
-    "mobile apps",
-  ],
+    "SpringVox", "AI software Nigeria", "enterprise solutions Africa",
+    "ReKallIQ", "knowledge AI", "cybersecurity Nigeria",
+    "digital transformation", "enterprise software development",
+    "web development Nigeria", "mobile app development",
+  ].join(", "),
   openGraph: {
     title: "SpringVox Solution Limited",
     description:
-      "Building intelligent software solutions for the future. AI, enterprise software, cybersecurity & digital innovation.",
+      "AI, Enterprise Software & Digital Innovation — Building intelligent solutions for the future.",
+    url: "https://spring-vox-solution-limited.vercel.app",
+    siteName: "SpringVox Solution Limited",
+    locale: "en_NG",
     type: "website",
-    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SpringVox Solution Limited",
+    description: "AI, Enterprise Software & Digital Innovation",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

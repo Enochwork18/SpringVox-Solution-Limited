@@ -4,7 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
 
-export default function CtaSection() {
+interface Props {
+  onOpenWaitlist?: () => void;
+}
+
+export default function CtaSection({ onOpenWaitlist }: Props) {
   return (
     <section id="cta" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-dark-bg via-dark-bg to-dark-card pointer-events-none" />
@@ -59,7 +63,7 @@ export default function CtaSection() {
           <Button variant="outline" size="lg">
             Book a Consultation
           </Button>
-          <Button variant="ghost" size="lg" showArrow>
+          <Button variant="ghost" size="lg" showArrow onClick={onOpenWaitlist}>
             Request a Demo
           </Button>
         </motion.div>
@@ -75,6 +79,26 @@ export default function CtaSection() {
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
             Free consultation &mdash; No commitment required
           </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-8 p-4 rounded-xl border border-[#0299b1]/20 bg-[#0299b1]/5 text-center"
+        >
+          <p className="text-sm text-gray-300">
+            👉 Looking to demo our AI knowledge platform?
+          </p>
+          <a
+            href="https://springvox-knowledge-ai.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#0299b1] font-semibold text-sm hover:underline"
+          >
+            Visit SpringVox Knowledge AI — AI-Powered Enterprise Answers ↗
+          </a>
         </motion.div>
       </div>
     </section>

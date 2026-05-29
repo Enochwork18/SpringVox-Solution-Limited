@@ -36,10 +36,10 @@ export default function Navbar() {
         <a
           href="#hero"
           onClick={(e) => { e.preventDefault(); handleClick("#hero"); }}
-          className="text-xl sm:text-2xl font-bold tracking-tight"
+          className="text-xl sm:text-2xl font-bold tracking-tight flex items-center gap-2"
         >
           <span className="gradient-text">SpringVox</span>
-          <span className="text-white/60 font-light ml-1.5">Solution</span>
+          <span className="text-white/60 font-light ml-0 hidden sm:inline">Solution Limited</span>
         </a>
 
         <div className="hidden md:flex items-center gap-1">
@@ -52,6 +52,15 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+          <a
+            href="https://springvox-knowledge-ai.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 text-sm text-[#0299b1] hover:text-white transition-colors duration-200 rounded-lg hover:bg-primary/10 font-medium"
+            style={{ textShadow: '0 0 20px rgba(2,153,177,0.3)' }}
+          >
+            ReKallIQ ↗
+          </a>
           <button
             onClick={() => handleClick("#cta")}
             className="ml-3 px-5 py-2 text-sm font-medium text-white bg-primary rounded-xl hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20"
@@ -88,6 +97,14 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
+              <a
+                href="https://springvox-knowledge-ai.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-left px-4 py-3 text-[#0299b1] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              >
+                ReKallIQ ↗
+              </a>
               <button
                 onClick={() => handleClick("#cta")}
                 className="w-full mt-3 px-5 py-3 text-center text-white bg-primary rounded-xl hover:bg-primary-dark transition-all"

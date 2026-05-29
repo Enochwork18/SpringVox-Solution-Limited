@@ -2,7 +2,7 @@
 
 import React from "react";
 import { company, navLinks, socialLinks } from "@/lib/constants";
-import { iconMap } from "@/lib/icons";
+import { iconMap, IconMail, IconMapPin } from "@/lib/icons";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-4">
             <a href="#hero" onClick={(e) => { e.preventDefault(); handleClick("#hero"); }} className="inline-block">
               <span className="text-xl font-bold gradient-text">SpringVox</span>
-              <span className="text-white/60 font-light ml-1.5">Solution</span>
+              <span className="text-white/60 font-light ml-1.5">Solution Limited</span>
             </a>
             <p className="mt-4 text-sm text-muted leading-relaxed max-w-xs">
               {company.description}
@@ -31,6 +31,8 @@ export default function Footer() {
                   <a
                     key={link.name}
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all duration-200"
                     aria-label={link.name}
                   >
@@ -54,10 +56,60 @@ export default function Footer() {
                   </button>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://springvox-knowledge-ai.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[#0299b1] hover:text-white transition-colors duration-200"
+                >
+                  ReKallIQ ↗
+                </a>
+              </li>
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-semibold text-white mb-4">Products</h4>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="https://springvox-knowledge-ai.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted hover:text-primary transition-colors duration-200"
+                >
+                  ReKallIQ (Knowledge AI) ↗
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleClick("#products")}
+                  className="text-sm text-muted hover:text-primary transition-colors duration-200"
+                >
+                  AegisIDS
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleClick("#products")}
+                  className="text-sm text-muted hover:text-primary transition-colors duration-200"
+                >
+                  TrueKall
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleClick("#products")}
+                  className="text-sm text-muted hover:text-primary transition-colors duration-200"
+                >
+                  Coming Soon
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
             <h4 className="text-sm font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2.5">
               {["Custom Software Development", "AI & Machine Learning", "Cybersecurity", "Cloud Infrastructure", "Web Development", "Mobile App Development"].map(
@@ -72,13 +124,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <h4 className="text-sm font-semibold text-white mb-4">Contact</h4>
-            <ul className="space-y-3">
-              <li className="text-sm text-muted">{company.email}</li>
-              <li className="text-sm text-muted">{company.phone}</li>
-              <li className="text-sm text-muted leading-relaxed">{company.address}</li>
-            </ul>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-sm text-muted">
+                <IconMail className="w-4 h-4 text-[#0299b1] flex-shrink-0" />
+                <a href="mailto:contact@springvox.com" className="hover:text-primary transition-colors">contact@springvox.com</a>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted">
+                <IconMapPin className="w-4 h-4 text-[#0299b1] flex-shrink-0" />
+                <span>Lagos, Nigeria</span>
+              </div>
+            </div>
           </div>
         </div>
 

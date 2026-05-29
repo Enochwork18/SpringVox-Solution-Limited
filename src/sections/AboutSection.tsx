@@ -18,7 +18,7 @@ export default function AboutSection() {
       <SectionHeader
         tag="About Us"
         title="Who We Are"
-        subtitle={company.description}
+        subtitle="SpringVox Solution Limited is a Nigerian-born technology company building world-class intelligent software for the modern enterprise. We combine deep expertise in AI, cybersecurity, enterprise software, and digital infrastructure to deliver solutions that don't just work — they transform."
         align="left"
       />
 
@@ -69,7 +69,9 @@ export default function AboutSection() {
             <p className="text-sm text-muted leading-relaxed">
               Since {company.founded}, we have been at the forefront of digital transformation, 
               delivering innovative solutions that empower businesses worldwide. 
-              Our team of 100+ experts combines deep technical expertise with 
+              Our products include <strong className="text-white">ReKallIQ</strong> — an enterprise AI knowledge platform — 
+              and we continue to build solutions across cybersecurity, VoIP, and 
+              enterprise automation. Our team of 100+ experts combines deep technical expertise with 
               a passion for excellence.
             </p>
           </motion.div>

@@ -128,20 +128,20 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-12 flex items-center gap-8 justify-center lg:justify-start text-xs text-muted"
+              className="mt-12 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-2 text-xs text-muted"
             >
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0299b1]" />
                 Enterprise Ready
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0299b1]" />
                 SOC 2 Compliant
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0299b1]" />
                 99.9% Uptime
-              </div>
+              </span>
             </motion.div>
           </div>
 
@@ -158,26 +158,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <button
-          onClick={() => handleClick("#about")}
-          className="flex flex-col items-center gap-2 text-muted hover:text-primary transition-colors"
-        >
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <div className="w-5 h-8 rounded-full border border-current flex items-start justify-center p-1.5">
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 rounded-full bg-current"
-            />
-          </div>
-        </button>
-      </motion.div>
     </section>
   );
 }

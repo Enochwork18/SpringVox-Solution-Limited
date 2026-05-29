@@ -55,6 +55,26 @@ export default function ThreeSection() {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-8 text-center"
+        >
+          <p className="text-gray-400 text-sm mb-3">
+            See this technology in action in our flagship product
+          </p>
+          <a
+            href="https://springvox-knowledge-ai.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[#0299b1] font-medium hover:underline"
+          >
+            Explore ReKallIQ Knowledge AI \u2197
+          </a>
+        </motion.div>
       </div>
     </section>
   );

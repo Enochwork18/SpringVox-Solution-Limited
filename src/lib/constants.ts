@@ -8,8 +8,8 @@ export const company = {
   vision:
     "To be a global leader in intelligent technology solutions, setting the standard for innovation, reliability, and enterprise excellence.",
   email: "contact@springvox.com",
-  phone: "+1 (555) 123-4567",
-  address: "123 Innovation Drive, Tech Valley, CA 94043",
+  phone: "",
+  address: "Lagos, Nigeria",
   founded: "2020",
 };
 
@@ -114,16 +114,6 @@ export const testimonials = [
     role: "CTO, FinTech Global",
   },
   {
-    quote: "The cybersecurity framework they implemented gave us enterprise-grade protection. Their team's expertise and responsiveness are outstanding.",
-    author: "Marcus Williams",
-    role: "VP Engineering, HealthTech Corp",
-  },
-  {
-    quote: "TrueKall revolutionized our customer communication. We saw a 50% improvement in response times and a 28% increase in customer satisfaction.",
-    author: "Priya Sharma",
-    role: "Director of Operations, TeleConnect",
-  },
-  {
     quote: "Working with SpringVox feels like having an extension of our own team. Their dedication to quality and innovation sets them apart.",
     author: "James Rodriguez",
     role: "CEO, CloudScale Inc.",
@@ -131,8 +121,8 @@ export const testimonials = [
 ];
 
 export const socialLinks = [
-  { name: "LinkedIn", href: "#", icon: "linkedin" },
-  { name: "Twitter", href: "#", icon: "twitter" },
-  { name: "GitHub", href: "#", icon: "github" },
-  { name: "YouTube", href: "#", icon: "youtube" },
+  { name: "LinkedIn", href: "https://springvox-knowledge-ai.vercel.app/", icon: "linkedin" },
+  { name: "Twitter", href: "https://springvox-knowledge-ai.vercel.app/", icon: "twitter" },
+  { name: "GitHub", href: "https://springvox-knowledge-ai.vercel.app/", icon: "github" },
+  { name: "YouTube", href: "https://springvox-knowledge-ai.vercel.app/", icon: "youtube" },
 ];
