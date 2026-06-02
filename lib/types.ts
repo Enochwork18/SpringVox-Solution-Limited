@@ -1,11 +1,11 @@
 export interface ServiceItem {
-  slug: string
-  name: string
-  description: string
-  icon: string
+  slug: string;
+  name: string;
+  description: string;
+  icon: string;
 }
 
 export interface NavLink {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }

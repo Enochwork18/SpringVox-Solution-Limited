@@ -11,7 +11,12 @@ interface FeatureCardProps {
   index: number;
 }
 
-export default function FeatureCard({ title, description, icon, index }: FeatureCardProps) {
+export default function FeatureCard({
+  title,
+  description,
+  icon,
+  index,
+}: FeatureCardProps) {
   const Icon = iconMap[icon];
 
   return (

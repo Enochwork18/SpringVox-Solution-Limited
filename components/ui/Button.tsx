@@ -9,10 +9,12 @@ interface ButtonProps {
   variant?: "primary" | "outline";
   size?: "sm" | "md" | "lg";
   href?: string;
+  target?: string;
   onClick?: () => void;
   className?: string;
   showArrow?: boolean;
   type?: "button" | "submit";
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -20,10 +22,12 @@ export default function Button({
   variant = "primary",
   size = "md",
   href,
+  target,
   onClick,
   className = "",
   showArrow = false,
   type = "button",
+  disabled = false,
 }: ButtonProps) {
   const baseClasses =
     "relative inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-dark-bg";
@@ -41,6 +45,8 @@ export default function Button({
       "border border-[#0299b1]/40 text-[#0299b1] hover:bg-[#0299b1]/10 hover:border-[#0299b1]/60 active:scale-[0.98]",
   };
 
+  const mergedClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${disabled ? "opacity-50 pointer-events-none" : ""} ${className}`;
+
   const content = (
     <>
       {children}
@@ -50,13 +56,16 @@ export default function Button({
     </>
   );
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <motion.a
         href={href}
-        className={`group ${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+        className={`group ${mergedClasses}`}
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.98 }}
+        onClick={onClick}
       >
         {content}
       </motion.a>
@@ -66,10 +75,11 @@ export default function Button({
   return (
     <motion.button
       type={type}
-      onClick={onClick}
-      className={`group ${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
-      whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.98 }}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
+      className={`group ${mergedClasses}`}
+      whileHover={disabled ? {} : { y: -2 }}
+      whileTap={disabled ? {} : { scale: 0.98 }}
     >
       {content}
     </motion.button>

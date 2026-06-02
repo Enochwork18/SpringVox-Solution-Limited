@@ -2,12 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks, LINKS } from "@/lib/constants";
 import { IconMenu, IconX } from "@/lib/icons";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -15,12 +19,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClick = (href: string) => {
+  const handleHashClick = (href: string) => {
     setMobileOpen(false);
-    if (window.location.pathname === "/") {
+    if (isHome) {
+      const offset = window.innerWidth < 768 ? 64 : 80;
       const el = document.querySelector(href);
       if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: "smooth" });
       }
     } else {
@@ -40,31 +45,43 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <a
-          href="#hero"
-          onClick={(e) => { e.preventDefault(); handleClick("#hero"); }}
+        <Link
+          href="/"
           className="flex items-center gap-2 mr-auto"
         >
+          <img
+            src="/logo.jpeg"
+            alt="SpringVox"
+            className="h-8 sm:h-9 w-auto rounded"
+          />
           <span className="font-bold text-[#0299b1] text-lg">SpringVox</span>
-          <span className="font-normal text-white hidden sm:inline text-lg">Solution Limited</span>
-        </a>
+          <span className="font-normal text-white hidden sm:inline text-lg">
+            Solution Limited
+          </span>
+        </Link>
 
         <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <button
               key={link.href}
-              onClick={() => handleClick(link.href)}
-              className="px-4 py-2 text-sm text-muted hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/5"
+              onClick={() => handleHashClick(link.href)}
+              className="px-3 py-2 text-sm text-muted hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/5"
             >
               {link.label}
             </button>
           ))}
-          <button
-            onClick={() => handleClick("#cta")}
-            className="ml-3 px-5 py-2 text-sm font-medium text-white bg-[#0299b1] rounded-xl hover:bg-[#017a8f] transition-all duration-300 shadow-lg shadow-[#0299b1]/20"
+          <Link
+            href="/rekall-iq"
+            className="px-3 py-2 text-sm text-muted hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/5"
+          >
+            ReKallIQ
+          </Link>
+          <Link
+            href="/contact"
+            className="ml-2 px-5 py-2 text-sm font-medium text-white bg-[#0299b1] rounded-xl hover:bg-[#017a8f] transition-all duration-300 shadow-lg shadow-[#0299b1]/20"
           >
             Contact Us
-          </button>
+          </Link>
         </div>
 
         <button
@@ -83,33 +100,39 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden border-t border-white/5 bg-dark-bg/95 backdrop-blur-xl"
+            className="md:hidden border-t border-white/5 bg-dark-bg/95 backdrop-blur-xl"
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => handleClick(link.href)}
+                  onClick={() => handleHashClick(link.href)}
                   className="block w-full text-left px-4 py-3 text-muted hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
-              <a
-                href={LINKS.productSite}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-left px-4 py-3 text-muted hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              <Link
+                href="/rekall-iq"
                 onClick={() => setMobileOpen(false)}
+                className="block w-full text-left px-4 py-3 text-[#0299b1] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
               >
                 ReKallIQ
-              </a>
-              <button
-                onClick={() => handleClick("#cta")}
-                className="w-full mt-3 px-5 py-3 text-center text-white bg-[#0299b1] rounded-xl hover:bg-[#017a8f] transition-all"
+              </Link>
+              <Link
+                href="/rekall-iq/readiness"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full text-left px-4 py-3 text-muted hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              >
+                AI Readiness Checklist
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full mt-3 px-5 py-3 text-center text-white bg-[#0299b1] rounded-xl hover:bg-[#017a8f] transition-all"
               >
                 Contact Us
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

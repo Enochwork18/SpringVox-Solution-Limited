@@ -11,7 +11,12 @@ interface IndustryCardProps {
   index: number;
 }
 
-export default function IndustryCard({ name, description, icon, index }: IndustryCardProps) {
+export default function IndustryCard({
+  name,
+  description,
+  icon,
+  index,
+}: IndustryCardProps) {
   const Icon = iconMap[icon];
 
   return (
@@ -20,7 +25,7 @@ export default function IndustryCard({ name, description, icon, index }: Industr
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.3, delay: index * 0.04 }}
-      className="group cursor-pointer"
+      className="group"
     >
       <div className="p-4 sm:p-5 rounded-xl bg-dark-card/50 border border-white/5 hover:border-primary/20 hover:bg-dark-card transition-all duration-300">
         <div className="flex items-center justify-between mb-3">

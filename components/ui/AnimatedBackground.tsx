@@ -30,7 +30,10 @@ export default function AnimatedBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    const count = Math.min(60, Math.floor((window.innerWidth * window.innerHeight) / 20000));
+    const count = Math.min(
+      60,
+      Math.floor((window.innerWidth * window.innerHeight) / 20000),
+    );
     particlesRef.current = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,

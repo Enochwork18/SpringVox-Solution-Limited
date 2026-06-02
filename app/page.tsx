@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import { useState } from "react";
 import HeroSection from "@/components/sections/Hero";
 import AboutSection from "@/components/sections/About";

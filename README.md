@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SpringVox Solution Limited
 
-## Getting Started
+Enterprise website and [ReKall-IQ](/rekall-iq) product landing page for SpringVox Solution Limited, a Nigerian technology company building AI platforms, enterprise software, cybersecurity, and digital transformation solutions for startups and enterprises across Africa.
 
-First, run the development server:
+**Production**: https://springvoxsl.com
+
+## Quick Links
+
+| Page | Description |
+|------|-------------|
+| [ReKall-IQ Product](/rekall-iq) | Full product page with features, pricing, comparison table, FAQ |
+| [AI Readiness Checklist](/rekall-iq/readiness) | 28-question interactive assessment with auto-scoring |
+| [Contact Us](/contact) | Contact form, consultation booking |
+| [Pricing](/pricing) | Service pricing tiers |
+| [Case Studies](/case-studies) | Client success stories |
+| [Privacy Policy](/privacy) | NDPR / GDPR compliant |
+| [Terms of Service](/terms) | Legal terms |
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript (strict mode) |
+| Styling | Tailwind CSS v4 |
+| Animation | Framer Motion |
+| 3D Graphics | Three.js (React Three Fiber) |
+| Fonts | Inter, Geist Mono (variable) |
+| Email | Resend API |
+| Database / CRM | Notion API (waitlist tracking) |
+| Deployment | Vercel |
+
+## Pages & Routes
+
+| Route | Type | Description |
+|-------|------|-------------|
+| `/` | Static | Homepage with hero (3D globe), stats, products, services, testimonials, CTA |
+| `/about` | Static | Redirects to homepage #about |
+| `/products` | Static | Redirects to homepage #products |
+| `/services` | Static | Service listing with all 12 service detail pages |
+| `/services/[slug]` | Static (x12) | Individual service pages |
+| `/pricing` | Static | Service pricing tiers with FAQ |
+| `/case-studies` | Static | 4 success stories with metrics |
+| `/contact` | Static | Contact form with validation, email notification |
+| `/rekall-iq` | Static | Full ReKall-IQ product page |
+| `/rekall-iq/readiness` | Static | AI Readiness interactive checklist |
+| `/privacy` | Static | Privacy Policy (NDPR / GDPR compliant) |
+| `/terms` | Static | Terms of Service |
+| `/thank-you` | Static | Post-submission confirmation |
+
+**Total**: 31 routes (27 static + 4 API), 0 build errors.
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build       # Zero errors expected
+npm run lint        # Zero warnings expected
+```
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.local.example` to `.env.local`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+# Resend (email delivery)
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=noreply@springvox.com
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Notifications
+WAITLIST_NOTIFY_EMAIL=hello@springvox.ai
 
-## Deploy on Vercel
+# Notion (optional - waitlist CRM tracking)
+NOTION_TOKEN=
+NOTION_WAITLIST_DB_ID=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Google Analytics
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Site URL
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+## Project Structure
+
+```
+├── app/                    Next.js App Router
+│   ├── layout.tsx          Root layout (GA, JSON-LD, SEO meta, fonts)
+│   ├── page.tsx            Homepage
+│   ├── api/                API route handlers
+│   ├── [route]/page.tsx    Static pages
+│   ├── rekall-iq/
+│   │   ├── page.tsx        Product page
+│   │   └── readiness/page.tsx
+│   └── services/[slug]/   12 service pages
+├── components/
+│   ├── layout/             Navbar, Footer, AppShell, ServicePageLayout
+│   ├── sections/           Hero, About, Products, Services, CTA, Stats
+│   ├── ui/                 Button, Card, Modal, Popup
+│   └── three/              GlobeSphere (3D)
+├── lib/
+│   ├── api/                API utilities (rateLimit, sanitize, cors)
+│   ├── analytics.ts        GA4 event tracking
+│   ├── api.ts              Form submission helpers
+│   ├── constants.ts        All content data
+│   ├── icons.tsx           Custom SVG icon components
+│   └── types.ts            Shared TypeScript types
+├── public/
+│   ├── logo.jpeg           Site logo
+│   ├── robots.txt
+│   └── sitemap.xml
+└── next.config.ts, tsconfig.json, eslint.config.mjs
+```
+
+## License
+
+All rights reserved. SpringVox Solution Limited.

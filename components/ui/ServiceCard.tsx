@@ -14,7 +14,13 @@ interface ServiceCardProps {
   slug?: string;
 }
 
-export default function ServiceCard({ name, description, icon, index, slug }: ServiceCardProps) {
+export default function ServiceCard({
+  name,
+  description,
+  icon,
+  index,
+  slug,
+}: ServiceCardProps) {
   const Icon = iconMap[icon];
   const href = slug ? `/services/${slug}` : undefined;
 
@@ -33,7 +39,9 @@ export default function ServiceCard({ name, description, icon, index, slug }: Se
         <h3 className="text-sm font-semibold text-white mb-2 group-hover:text-primary transition-colors duration-300">
           {name}
         </h3>
-        <p className="text-xs text-muted leading-relaxed flex-1">{description}</p>
+        <p className="text-xs text-muted leading-relaxed flex-1">
+          {description}
+        </p>
         {href && (
           <span className="inline-flex items-center gap-1 text-xs text-[#0299b1] font-medium mt-3 group-hover:gap-1.5 transition-all">
             Learn More <IconArrowRight className="w-3 h-3" />

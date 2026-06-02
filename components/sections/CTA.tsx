@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import { trackCTAClick } from "@/lib/analytics";
 
 interface Props {
   onOpenWaitlist?: () => void;
@@ -10,7 +11,10 @@ interface Props {
 
 export default function CtaSection({ onOpenWaitlist }: Props) {
   return (
-    <section id="cta" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section
+      id="cta"
+      className="relative py-20 sm:py-28 lg:py-32 overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-dark-bg via-dark-bg to-dark-card pointer-events-none" />
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
@@ -46,8 +50,8 @@ export default function CtaSection({ onOpenWaitlist }: Props) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-5 text-base sm:text-lg text-muted max-w-2xl mx-auto"
         >
-          Let&apos;s discuss how SpringVox Solution Limited can help you achieve your 
-          technology goals with innovative, scalable, and secure solutions.
+          Let&apos;s discuss how SpringVox Solution Limited can help you achieve
+          your technology goals with innovative, scalable, and secure solutions.
         </motion.p>
 
         <motion.div
@@ -57,13 +61,32 @@ export default function CtaSection({ onOpenWaitlist }: Props) {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <Button variant="primary" size="lg" showArrow>
+          <Button
+            variant="primary"
+            size="lg"
+            showArrow
+            href="mailto:contact@springvox.com?subject=Start%20a%20Project%20Inquiry"
+            onClick={() => trackCTAClick("Start a Project", "cta_section")}
+          >
             Start a Project
           </Button>
-          <Button variant="outline" size="lg">
+          <Button
+            variant="outline"
+            size="lg"
+            href="mailto:contact@springvox.com?subject=Book%20a%20Consultation"
+            onClick={() => trackCTAClick("Book a Consultation", "cta_section")}
+          >
             Book a Consultation
           </Button>
-          <Button variant="outline" size="lg" showArrow onClick={onOpenWaitlist}>
+          <Button
+            variant="outline"
+            size="lg"
+            showArrow
+            onClick={() => {
+              trackCTAClick("Request a Demo", "cta_section");
+              onOpenWaitlist?.();
+            }}
+          >
             Request a Demo
           </Button>
         </motion.div>
@@ -77,7 +100,7 @@ export default function CtaSection({ onOpenWaitlist }: Props) {
         >
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-            Free consultation &mdash; No commitment required
+            Free consultation - No commitment required
           </span>
         </motion.div>
 

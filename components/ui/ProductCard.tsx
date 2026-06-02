@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { iconMap, IconCheck } from "@/lib/icons";
 import Button from "@/components/ui/Button";
 
@@ -13,6 +14,7 @@ interface ProductCardProps {
   features: string[];
   gradient: string;
   index: number;
+  href?: string;
 }
 
 export default function ProductCard({
@@ -23,6 +25,7 @@ export default function ProductCard({
   features,
   gradient,
   index,
+  href,
 }: ProductCardProps) {
   const Icon = iconMap[icon];
 
@@ -35,10 +38,14 @@ export default function ProductCard({
       className="group relative"
     >
       <div className="relative p-6 sm:p-8 rounded-2xl bg-dark-card border border-white/5 hover:border-primary/20 transition-all duration-500 h-full flex flex-col">
-        <div className={`absolute inset-0 rounded-2xl bg-gradient-to-b ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+        <div
+          className={`absolute inset-0 rounded-2xl bg-gradient-to-b ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+        />
 
         <div className="flex items-start gap-4 mb-5">
-          <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg`}>
+          <div
+            className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg`}
+          >
             {Icon && <Icon className="w-6 h-6 text-white" />}
           </div>
           <div>
@@ -55,7 +62,10 @@ export default function ProductCard({
 
         <div className="space-y-2 mb-6">
           {features.map((feat) => (
-            <div key={feat} className="flex items-center gap-2.5 text-xs text-muted-light">
+            <div
+              key={feat}
+              className="flex items-center gap-2.5 text-xs text-muted-light"
+            >
               <span className="flex-shrink-0 w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center">
                 <IconCheck className="w-2.5 h-2.5 text-primary" />
               </span>
@@ -64,9 +74,18 @@ export default function ProductCard({
           ))}
         </div>
 
-        <Button variant="outline" size="sm" showArrow className="w-full mt-auto">
-          Learn More
-        </Button>
+        {href && (
+          <Link href={href}>
+            <Button
+              variant="outline"
+              size="sm"
+              showArrow
+              className="w-full mt-auto"
+            >
+              Learn More
+            </Button>
+          </Link>
+        )}
       </div>
     </motion.div>
   );

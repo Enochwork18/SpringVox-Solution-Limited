@@ -42,18 +42,32 @@ const floatingCards = [
 
 export default function HeroSection() {
   const handleClick = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (window.location.pathname === "/") {
+      const offset = window.innerWidth < 768 ? 64 : 80;
+      const el = document.querySelector(href);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    } else {
+      window.location.href = "/" + href;
+    }
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       <AnimatedBackground />
 
       <div className="absolute inset-0 bg-gradient-to-b from-dark-bg via-dark-bg/95 to-dark-card pointer-events-none" />
 
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/[0.08] rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/[0.08] rounded-full blur-[100px] animate-pulse-glow"
+        style={{ animationDelay: "2s" }}
+      />
 
       {floatingCards.map((card) => (
         <motion.div
@@ -63,10 +77,14 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: card.delay }}
           className={`hidden lg:flex absolute ${card.position} items-center gap-3 px-4 py-3 rounded-xl bg-dark-card/60 backdrop-blur-xl border border-white/5 shadow-xl pointer-events-none`}
         >
-          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${card.color} flex items-center justify-center`}>
+          <div
+            className={`w-8 h-8 rounded-lg bg-gradient-to-br ${card.color} flex items-center justify-center`}
+          >
             <card.Icon className="w-4 h-4 text-white" />
           </div>
-          <span className="text-xs font-medium text-white/80 whitespace-nowrap">{card.label}</span>
+          <span className="text-xs font-medium text-white/80 whitespace-nowrap">
+            {card.label}
+          </span>
         </motion.div>
       ))}
 
@@ -102,7 +120,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-6 text-base sm:text-lg text-muted leading-relaxed max-w-xl mx-auto lg:mx-0"
             >
-              AI, enterprise software, cybersecurity, and digital innovation &mdash;
+              AI, enterprise software, cybersecurity, and digital innovation
               empowering businesses with cutting-edge technology solutions that
               drive transformation and growth.
             </motion.p>
@@ -113,10 +131,19 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 justify-center lg:justify-start"
             >
-              <Button variant="primary" size="lg" showArrow onClick={() => handleClick("#products")}>
+              <Button
+                variant="primary"
+                size="lg"
+                showArrow
+                onClick={() => handleClick("#products")}
+              >
                 Explore Solutions
               </Button>
-              <Button variant="outline" size="lg" onClick={() => handleClick("#cta")}>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => handleClick("#cta")}
+              >
                 Request Consultation
               </Button>
             </motion.div>
@@ -127,12 +154,14 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="mt-12 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-3 text-sm text-muted"
             >
-              {['Enterprise Ready', 'SOC 2 Compliant', '99.9% Uptime'].map(badge => (
-                <span key={badge} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0299b1] flex-shrink-0" />
-                  {badge}
-                </span>
-              ))}
+              {["Enterprise Ready", "SOC 2 Compliant", "99.9% Uptime"].map(
+                (badge) => (
+                  <span key={badge} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0299b1] flex-shrink-0" />
+                    {badge}
+                  </span>
+                ),
+              )}
             </motion.div>
           </div>
 

@@ -4,7 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-const ThreeScene = dynamic(() => import("@/components/three/GlobeSphere"), { ssr: false });
+const ThreeScene = dynamic(() => import("@/components/three/GlobeSphere"), {
+  ssr: false,
+});
 
 export default function ThreeSection() {
   return (
@@ -23,23 +25,25 @@ export default function ThreeSection() {
               Innovation Core
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-5">
-              Powered by{" "}
-              <span className="gradient-text">Next-Generation</span> Technology
+              Powered by <span className="gradient-text">Next-Generation</span>{" "}
+              Technology
             </h2>
             <p className="text-sm text-muted leading-relaxed max-w-md">
-              Our technology stack leverages cutting-edge advancements in AI, 
-              cloud computing, and cybersecurity to deliver solutions that are 
+              Our technology stack leverages cutting-edge advancements in AI,
+              cloud computing, and cybersecurity to deliver solutions that are
               not just modern - but future-ready.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
-              {["AI & ML", "Cloud Native", "Zero Trust", "Edge Ready"].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1.5 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
-                >
-                  {tag}
-                </span>
-              ))}
+              {["AI & ML", "Cloud Native", "Zero Trust", "Edge Ready"].map(
+                (tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
+                  >
+                    {tag}
+                  </span>
+                ),
+              )}
             </div>
           </motion.div>
 

@@ -28,11 +28,13 @@ function TechCore() {
       const t = (i * 2.399) % (Math.PI * 2);
       const u = Math.acos(2 * ((i * 0.271) % 1) - 1);
       const r = 2.2 + ((i * 0.137) % 1) * 0.3;
-      p.push(new THREE.Vector3(
-        r * Math.sin(u) * Math.cos(t),
-        r * Math.sin(u) * Math.sin(t),
-        r * Math.cos(u)
-      ));
+      p.push(
+        new THREE.Vector3(
+          r * Math.sin(u) * Math.cos(t),
+          r * Math.sin(u) * Math.sin(t),
+          r * Math.cos(u),
+        ),
+      );
     }
     return p;
   }, []);
@@ -81,7 +83,11 @@ function TechCore() {
       {points.map((pos, i) => (
         <mesh key={i} position={pos}>
           <sphereGeometry args={[0.035, 6, 6]} />
-          <meshBasicMaterial color="#0299b1" transparent opacity={0.4 + ((i * 0.193) % 1) * 0.3} />
+          <meshBasicMaterial
+            color="#0299b1"
+            transparent
+            opacity={0.4 + ((i * 0.193) % 1) * 0.3}
+          />
         </mesh>
       ))}
     </group>
