@@ -91,7 +91,7 @@ function ReKalliqPanel({ onOpenWaitlist }: { onOpenWaitlist?: () => void }) {
             ReKallIQ
           </h3>
           <p className="mt-2 text-lg text-[#0abde3] font-medium">
-            Enterprise Knowledge Intelligence \u2014 Reimagined
+            Enterprise Knowledge Intelligence - Reimagined
           </p>
         </div>
 
